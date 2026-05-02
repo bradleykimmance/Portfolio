@@ -31,6 +31,16 @@ const architectureProjects = [
 const MermaidDiagram = ({ chart }: { readonly chart: string }) => {
   const id = useId();
   const [svg, setSvg] = useState('');
+  const [isDark, setIsDark] = useState(
+    () => window.matchMedia('(prefers-color-scheme: dark)').matches,
+  );
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handler = (event: MediaQueryListEvent) => setIsDark(event.matches);
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, []);
 
   useEffect(() => {
     let isMounted = true;
@@ -38,14 +48,14 @@ const MermaidDiagram = ({ chart }: { readonly chart: string }) => {
     mermaid.initialize({
       securityLevel: 'strict',
       startOnLoad: false,
-      theme: 'default',
+      theme: isDark ? 'dark' : 'default',
     });
 
     const renderDiagram = async () => {
-      const { svg: renderedSvg } = await mermaid.render(
-        `mermaid-${id.replaceAll(':', '')}`,
-        chart,
-      );
+      const themeKey = isDark ? 'dark' : 'light';
+      const renderId = `mermaid-${id.replaceAll(':', '')}-${themeKey}`;
+
+      const { svg: renderedSvg } = await mermaid.render(renderId, chart);
 
       if (isMounted) {
         setSvg(renderedSvg);
@@ -57,13 +67,14 @@ const MermaidDiagram = ({ chart }: { readonly chart: string }) => {
     return () => {
       isMounted = false;
     };
-  }, [chart, id]);
+  }, [chart, id, isDark]);
 
   return (
     <div
       className="mermaid-diagram flex justify-center"
       /* eslint-disable-next-line react/no-danger */
       dangerouslySetInnerHTML={{ __html: svg }}
+      style={{ colorScheme: 'only light' }}
     />
   );
 };
