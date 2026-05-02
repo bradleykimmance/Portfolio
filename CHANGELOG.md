@@ -1,4 +1,14 @@
-# 0.1.0 (2026-05-02)
+## [0.1.1](https://github.com/bradleykimmance/Portfolio/compare/v0.1.0...v0.1.1) (2026-05-02)
+
+
+### Bug Fixes
+
+* mermaid svgs with dark mode support ([6be571b](https://github.com/bradleykimmance/Portfolio/commit/6be571bb1b716fe440002ad627a523ee3425e63b))
+* stop svg icon switching to dark mode ([5e92f77](https://github.com/bradleykimmance/Portfolio/commit/5e92f773dec33349650239496aad06d8fe32ade5))
+
+
+
+# [0.1.0](https://github.com/bradleykimmance/Portfolio/compare/a19dc66bf6882bd35d38cfa361e12c817da4314a...v0.1.0) (2026-05-02)
 
 
 ### Bug Fixes
