@@ -23,6 +23,7 @@ export const Navbar = () => {
               alt=""
               className="h-9 w-9"
               src="/favicon.svg"
+              style={{ colorScheme: 'only light' }}
             />
             <span className="text-lg font-bold text-espresso-900 dark:text-cream-50">
               Bradley Kimmance
