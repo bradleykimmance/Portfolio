@@ -1,9 +1,11 @@
 import { Code } from 'lucide-react';
+import mermaid from 'mermaid';
+import { useEffect, useId, useState } from 'react';
 
 const architectureProjects = [
   {
     description: 'Example Architecture 1',
-    mermaid: `graph LR
+    mermaid: `graph TD
   A[Application API] --> B[Validation Layer]
   B --> C[Payment Orchestrator]
   C --> D{Provider Router}
@@ -25,6 +27,46 @@ const architectureProjects = [
     title: 'Telephony Context Integration',
   },
 ];
+
+const MermaidDiagram = ({ chart }: { readonly chart: string }) => {
+  const id = useId();
+  const [svg, setSvg] = useState('');
+
+  useEffect(() => {
+    let isMounted = true;
+
+    mermaid.initialize({
+      securityLevel: 'strict',
+      startOnLoad: false,
+      theme: 'default',
+    });
+
+    const renderDiagram = async () => {
+      const { svg: renderedSvg } = await mermaid.render(
+        `mermaid-${id.replaceAll(':', '')}`,
+        chart,
+      );
+
+      if (isMounted) {
+        setSvg(renderedSvg);
+      }
+    };
+
+    void renderDiagram();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [chart, id]);
+
+  return (
+    <div
+      className="mermaid-diagram flex justify-center"
+      /* eslint-disable-next-line react/no-danger */
+      dangerouslySetInnerHTML={{ __html: svg }}
+    />
+  );
+};
 
 export const ArchitectureGallery = () => {
   return (
@@ -72,9 +114,7 @@ export const ArchitectureGallery = () => {
               </p>
 
               <div className="overflow-x-auto rounded-xl border border-cream-200 bg-cream-50 p-6 font-mono text-sm dark:border-espresso-800 dark:bg-espresso-950">
-                <pre className="text-espresso-800 dark:text-cream-100">
-                  {project.mermaid}
-                </pre>
+                <MermaidDiagram chart={project.mermaid} />
 
                 <div className="mt-4 border-t border-cream-200 pt-4 text-xs italic text-warm-gray-500 dark:border-espresso-800 dark:text-cream-200/60">
                   * Simplified architecture example. Detailed implementation
