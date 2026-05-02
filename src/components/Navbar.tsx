@@ -8,36 +8,52 @@ export const Navbar = () => {
     { href: '#about', name: 'About' },
     { href: '#competencies', name: 'Competencies' },
     { href: '#architecture', name: 'Architecture' },
-    { href: '#projects', name: 'Projects' },
+    { href: '#projects', name: 'Experience' },
   ];
 
   return (
-    <nav className="fixed w-full bg-white dark:bg-slate-900 shadow-sm z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          <div className="flex-shrink-0">
-            <span className="text-xl font-bold text-slate-800 dark:text-white">
-              DevPortfolio
+    <nav className="fixed z-50 w-full border-b border-cream-200/80 bg-cream-50/90 shadow-sm backdrop-blur-md dark:border-espresso-800 dark:bg-espresso-950/90">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex h-16 items-center justify-between">
+          <a
+            className="flex items-center gap-3"
+            href="#about"
+          >
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-espresso-900 text-sm font-extrabold tracking-tight text-cream-100 ring-1 ring-gold-400/40 dark:bg-espresso-800">
+              <span>B</span>
+              <span className="ml-0.5 text-gold-400">K</span>
             </span>
-          </div>
+            <span className="text-lg font-bold text-espresso-900 dark:text-cream-50">
+              Bradley Kimmance
+            </span>
+          </a>
 
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4">
+            <div className="ml-10 flex items-center gap-2">
               {navItems.map((item) => (
                 <a
-                  className="text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="rounded-md px-3 py-2 text-sm font-medium text-warm-gray-600 transition-colors hover:text-espresso-900 dark:text-cream-200/80 dark:hover:text-cream-50"
                   href={item.href}
                   key={item.name}
                 >
                   {item.name}
                 </a>
               ))}
+              <a
+                className="ml-2 rounded-full bg-espresso-900 px-4 py-2 text-sm font-semibold text-cream-50 transition-colors hover:bg-espresso-800 dark:bg-gold-400 dark:text-espresso-950 dark:hover:bg-gold-300"
+                href="https://uk.linkedin.com/in/bradleykimmance"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                LinkedIn
+              </a>
             </div>
           </div>
 
           <div className="md:hidden">
             <button
-              className="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-700 focus:outline-none"
+              aria-label="Toggle navigation"
+              className="inline-flex items-center justify-center rounded-md p-2 text-espresso-800 transition-colors hover:bg-cream-100 dark:text-cream-100 dark:hover:bg-espresso-800"
               onClick={() => setIsOpen(!isOpen)}
               type="button"
             >
@@ -48,11 +64,11 @@ export const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-white dark:bg-slate-900 border-t dark:border-slate-800">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <div className="border-t border-cream-200 bg-cream-50 md:hidden dark:border-espresso-800 dark:bg-espresso-950">
+          <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
             {navItems.map((item) => (
               <a
-                className="block text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-3 py-2 rounded-md text-base font-medium"
+                className="block rounded-md px-3 py-2 text-base font-medium text-warm-gray-600 hover:text-espresso-900 dark:text-cream-200/80 dark:hover:text-cream-50"
                 href={item.href}
                 key={item.name}
                 onClick={() => setIsOpen(false)}
@@ -60,6 +76,15 @@ export const Navbar = () => {
                 {item.name}
               </a>
             ))}
+            <a
+              className="block rounded-md px-3 py-2 text-base font-semibold text-gold-500 dark:text-gold-300"
+              href="https://uk.linkedin.com/in/bradleykimmance"
+              onClick={() => setIsOpen(false)}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              LinkedIn
+            </a>
           </div>
         </div>
       )}

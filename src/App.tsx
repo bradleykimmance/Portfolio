@@ -8,7 +8,7 @@ import './App.css';
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors">
+    <div className="min-h-screen bg-cream-50 text-espresso-900 transition-colors dark:bg-espresso-950 dark:text-cream-50">
       <Navbar />
       <main>
         <Hero />
@@ -16,10 +16,10 @@ const App = () => {
         <ArchitectureGallery />
         <Projects />
       </main>
-      <footer className="py-12 border-t dark:border-slate-800 text-center text-slate-500 text-sm">
+      <footer className="border-t border-cream-200 px-4 py-12 text-center text-sm text-warm-gray-500 dark:border-espresso-800 dark:text-cream-200/70">
         <p>
-          © {new Date().getFullYear()} Bradley Kimmance Portfolio. Built with
-          React 19 & Vite.
+          © {new Date().getFullYear()} Bradley Kimmance. Built with React,
+          TypeScript & Vite.
         </p>
       </footer>
     </div>

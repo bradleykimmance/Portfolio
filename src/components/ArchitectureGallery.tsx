@@ -2,63 +2,83 @@ import { Code } from 'lucide-react';
 
 const architectureProjects = [
   {
-    description:
-      'Multi-provider payment orchestration with retry logic and event sourcing.',
+    description: 'Example Architecture 1',
     mermaid: `graph LR
-      A[API Gateway] --> B[Validation Service]
-      B --> C{Event Bus}
-      C --> D[Stripe Provider]
-      C --> E[PayPal Provider]
-      D --> F[Database]
-      E --> F`,
-    title: 'Global Payment Pipeline',
+  A[Application API] --> B[Validation Layer]
+  B --> C[Payment Orchestrator]
+  C --> D{Provider Router}
+  D --> E[Provider A]
+  D --> F[Provider B]
+  E --> G[Transaction Store]
+  F --> G
+  G --> H[Event Publisher]`,
+    title: 'Payment Provider Orchestration',
   },
   {
-    description:
-      'Dynamic IVR routing based on real-time customer data and intent analysis.',
+    description: 'Example Architecture 2',
     mermaid: `graph TD
-      A[Customer Call] --> B[Speech Recognition]
-      B --> C{Route Logic}
-      C --> D[Self Service]
-      C --> E[Agent Transfer]`,
-    title: 'IVR Workflow Engine',
+  A[Telephony Platform] --> B[Event Listener]
+  B --> C[Integration Service]
+  C --> D[Context Resolver]
+  D --> E[Web Application]
+  C --> F[Audit Trail]`,
+    title: 'Telephony Context Integration',
   },
 ];
 
 export const ArchitectureGallery = () => {
   return (
     <section
-      className="py-20 px-4"
+      className="px-4 py-20"
       id="architecture"
     >
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-center text-slate-900 dark:text-white mb-16">
-          Architecture Gallery
-        </h2>
-        <div className="grid lg:grid-cols-2 gap-12">
+      <div className="mx-auto max-w-7xl">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-gold-500 dark:text-gold-300">
+            Architecture Gallery
+          </p>
+          <h2 className="text-3xl font-bold text-espresso-950 dark:text-cream-50">
+            Clear integration patterns for real-world software systems.
+          </h2>
+          <p className="mt-4 text-warm-gray-600 dark:text-cream-200/70">
+            Simplified examples showing the kinds of system boundaries and data
+            flows I work with.
+          </p>
+        </div>
+
+        <div className="grid gap-12 lg:grid-cols-2">
           {architectureProjects.map((project) => (
             <div
-              className="bg-slate-50 dark:bg-slate-800/50 rounded-2xl p-8 border border-slate-200 dark:border-slate-700"
+              className="rounded-2xl border border-cream-200 bg-white/80 p-8 shadow-sm dark:border-espresso-800 dark:bg-espresso-900/70"
               key={project.title}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <Code
-                  color="#2b7fff"
-                  size={24}
-                />
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+              <div className="mb-6 flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gold-400/15 ring-1 ring-gold-400/20">
+                  <div className="text-gold-500 dark:text-gold-300">
+                    <Code
+                      color="currentColor"
+                      size={24}
+                    />
+                  </div>
+                </div>
+
+                <h3 className="text-2xl font-bold text-espresso-950 dark:text-cream-50">
                   {project.title}
                 </h3>
               </div>
-              <p className="text-slate-600 dark:text-slate-400 mb-8">
+
+              <p className="mb-8 leading-7 text-warm-gray-600 dark:text-cream-200/75">
                 {project.description}
               </p>
-              <div className="bg-white dark:bg-slate-900 rounded-lg p-6 border border-slate-200 dark:border-slate-800 font-mono text-sm overflow-x-auto">
-                <pre className="text-blue-600 dark:text-blue-400">
+
+              <div className="overflow-x-auto rounded-xl border border-cream-200 bg-cream-50 p-6 font-mono text-sm dark:border-espresso-800 dark:bg-espresso-950">
+                <pre className="text-espresso-800 dark:text-cream-100">
                   {project.mermaid}
                 </pre>
-                <div className="mt-4 pt-4 border-t dark:border-slate-800 text-xs text-slate-400 italic">
-                  * Mermaid.js rendering engine ready for implementation
+
+                <div className="mt-4 border-t border-cream-200 pt-4 text-xs italic text-warm-gray-500 dark:border-espresso-800 dark:text-cream-200/60">
+                  * Simplified architecture example. Detailed implementation
+                  varies by provider, platform, and business requirements.
                 </div>
               </div>
             </div>
