@@ -19,10 +19,11 @@ export const Navbar = () => {
             className="flex items-center gap-3"
             href="#about"
           >
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-espresso-900 text-sm font-extrabold tracking-tight text-cream-100 ring-1 ring-gold-400/40 dark:bg-espresso-800">
-              <span>B</span>
-              <span className="ml-0.5 text-gold-400">K</span>
-            </span>
+            <img
+              alt=""
+              className="h-9 w-9"
+              src="/favicon.svg"
+            />
             <span className="text-lg font-bold text-espresso-900 dark:text-cream-50">
               Bradley Kimmance
             </span>
