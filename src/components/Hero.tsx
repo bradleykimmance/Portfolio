@@ -44,7 +44,7 @@ export const Hero = () => {
           </a>
         </div>
 
-        <div className="mx-auto mt-12 grid max-w-4xl gap-4 text-left md:grid-cols-3">
+        <div className="mx-auto mt-12 grid max-w-4xl gap-4 text-center md:grid-cols-3 md:text-left">
           <div className="rounded-2xl border border-cream-200 bg-white/70 p-5 shadow-sm dark:border-espresso-800 dark:bg-espresso-900/70">
             <h2 className="font-semibold text-espresso-950 dark:text-cream-50">
               Payments

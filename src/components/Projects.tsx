@@ -28,7 +28,7 @@ export const Projects = () => {
         <div className="grid gap-8 md:grid-cols-2">
           {projects.map((project) => (
             <div
-              className="flex h-full flex-col rounded-2xl border border-cream-200 bg-white/80 p-8 shadow-sm transition-transform hover:-translate-y-1 dark:border-espresso-800 dark:bg-espresso-950/70"
+              className="flex h-full flex-col rounded-2xl border border-cream-200 bg-white/80 p-8 text-center shadow-sm transition-transform hover:-translate-y-1 md:text-left dark:border-espresso-800 dark:bg-espresso-950/70"
               key={project.title}
             >
               <h3 className="mb-4 text-2xl font-bold text-espresso-950 dark:text-cream-50">
@@ -39,7 +39,7 @@ export const Projects = () => {
                 {project.description}
               </p>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap justify-center gap-2 md:justify-start">
                 {project.techStack.map((tech) => (
                   <span
                     className="rounded-full bg-gold-400/15 px-3 py-1 text-sm font-medium text-espresso-800 ring-1 ring-gold-400/20 dark:text-gold-300"

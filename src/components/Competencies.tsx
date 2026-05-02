@@ -75,10 +75,10 @@ export const Competencies = () => {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {competencies.map(({ Icon, ...comp }) => (
             <div
-              className="rounded-2xl border border-cream-200 bg-white/80 p-8 shadow-sm transition-transform hover:-translate-y-1 dark:border-espresso-800 dark:bg-espresso-950/70"
+              className="rounded-2xl border border-cream-200 bg-white/80 p-8 text-center shadow-sm transition-transform hover:-translate-y-1 md:text-left dark:border-espresso-800 dark:bg-espresso-950/70"
               key={comp.title}
             >
-              <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-gold-400/15 text-gold-500 ring-1 ring-gold-400/20 dark:text-gold-300">
+              <div className="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-gold-400/15 text-gold-500 ring-1 ring-gold-400/20 md:mx-0 dark:text-gold-300">
                 <Icon
                   color="currentColor"
                   size={32}
@@ -93,7 +93,7 @@ export const Competencies = () => {
                 {comp.description}
               </p>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap justify-center gap-2 md:justify-start">
                 {comp.details.map((detail) => (
                   <span
                     className="rounded-full bg-gold-400/15 px-3 py-1 text-xs font-semibold text-espresso-800 ring-1 ring-gold-400/20 dark:text-gold-300"

@@ -49,11 +49,11 @@ export const ArchitectureGallery = () => {
         <div className="grid gap-12 lg:grid-cols-2">
           {architectureProjects.map((project) => (
             <div
-              className="rounded-2xl border border-cream-200 bg-white/80 p-8 shadow-sm dark:border-espresso-800 dark:bg-espresso-900/70"
+              className="min-w-0 rounded-2xl border border-cream-200 bg-white/80 p-8 text-center shadow-sm md:text-left dark:border-espresso-800 dark:bg-espresso-900/70"
               key={project.title}
             >
-              <div className="mb-6 flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gold-400/15 ring-1 ring-gold-400/20">
+              <div className="mb-6 flex flex-col items-center gap-3 md:flex-row md:gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gold-400/15 ring-1 ring-gold-400/20">
                   <div className="text-gold-500 dark:text-gold-300">
                     <Code
                       color="currentColor"
