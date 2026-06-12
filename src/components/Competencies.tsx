@@ -1,10 +1,10 @@
 import {
+  Activity,
   Cloud,
   CreditCard,
   Network,
   Server,
   Workflow,
-  Zap,
 } from 'lucide-react';
 
 const competencies = [
@@ -17,38 +17,45 @@ const competencies = [
   },
   {
     description:
-      'Backend-focused TypeScript and Node.js services designed around maintainability, clear boundaries, and practical production use.',
-    details: ['TypeScript', 'Node.js', 'API Design', 'Clean Architecture'],
+      'Backend TypeScript and Node.js services designed around maintainability, clear boundaries, and practical production use.',
+    details: ['TypeScript', 'Node.js', 'Express', 'API Design'],
     Icon: Server,
     title: 'Backend Engineering',
   },
   {
     description:
-      'Cloud-native services and deployment patterns using infrastructure that supports scalable, dependable applications.',
-    details: ['AWS', 'Kubernetes', 'Services', 'Reliability'],
+      'Cloud-native services on AWS — EKS, Lambda, DynamoDB — with containerised deployments managed through Helm and Istio.',
+    details: ['AWS', 'Kubernetes', 'Helm', 'Istio'],
     Icon: Cloud,
     title: 'Cloud-Native Systems',
   },
   {
     description:
-      'Asynchronous workflows and integration patterns for systems that need to handle events, retries, and background processing.',
-    details: ['RabbitMQ', 'Redis', 'Queues', 'Event Flows'],
+      'Asynchronous workflows and event-driven state machines for systems that synchronise real-time events at scale.',
+    details: ['RabbitMQ', 'Redis', 'WebSockets', 'State Machines'],
     Icon: Workflow,
     title: 'Event-Driven Architecture',
   },
   {
     description:
-      'Contact-centre and telephony integrations that bring operational call context into useful web application experiences.',
-    details: ['Genesys Cloud CX', 'Avaya AES', 'Call Context', 'Web Apps'],
+      'Contact-centre and telephony integrations that bring real-time call context into recordings and web applications.',
+    details: ['Genesys Cloud CX', 'Avaya AES', 'Kamailio', 'SIP'],
     Icon: Network,
     title: 'Telephony Integrations',
   },
   {
     description:
-      'A practical approach to solving complex integration problems with systems that remain understandable and maintainable.',
-    details: ['Problem Solving', 'System Design', 'Maintainability'],
-    Icon: Zap,
-    title: 'Practical Architecture',
+      'Automated testing, CI/CD pipelines, and production observability that keep systems dependable and debuggable.',
+    details: [
+      'Vitest',
+      'CI/CD',
+      'Grafana',
+      'Prometheus',
+      'Splunk',
+      'CloudWatch',
+    ],
+    Icon: Activity,
+    title: 'Quality & Observability',
   },
 ];
 

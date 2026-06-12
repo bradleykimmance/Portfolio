@@ -1,83 +1,33 @@
+import paymentOrchestrationDark from '../assets/diagrams/payment-orchestration-dark.svg';
+import paymentOrchestrationLight from '../assets/diagrams/payment-orchestration-light.svg';
+import selectiveCallRecordingDark from '../assets/diagrams/selective-call-recording-dark.svg';
+import selectiveCallRecordingLight from '../assets/diagrams/selective-call-recording-light.svg';
 import { Code } from 'lucide-react';
-import mermaid from 'mermaid';
-import { useEffect, useId, useState } from 'react';
 
+// SVGs are pre-rendered from the Mermaid sources in diagrams/*.mmd.
+// After editing a .mmd file, regenerate them with `npm run diagrams`.
 const architectureProjects = [
   {
-    description: 'Example Architecture 1',
-    mermaid: `graph TD
-  A[Application API] --> B[Validation Layer]
-  B --> C[Payment Orchestrator]
-  C --> D{Provider Router}
-  D --> E[Provider A]
-  D --> F[Provider B]
-  E --> G[Transaction Store]
-  F --> G
-  G --> H[Event Publisher]`,
-    title: 'Payment Provider Orchestration',
+    alt: 'Flow diagram: recording servers and an Avaya AES WTI service publish events to RabbitMQ. A selective recording worker consumes them, maintains per-call state, and either issues a resume-recording command for registered agents or leaves recording paused.',
+    description:
+      'A RabbitMQ-based state machine that synchronises events from recording servers and a real-time telephony service so that only registered agents are ever recorded. The worker maintains per-call state across both event streams and issues resume-recording commands — running against thousands of concurrent calls in production.',
+    diagram: {
+      dark: selectiveCallRecordingDark,
+      light: selectiveCallRecordingLight,
+    },
+    title: 'Selective Call Recording Worker',
   },
   {
-    description: 'Example Architecture 2',
-    mermaid: `graph TD
-  A[Telephony Platform] --> B[Event Listener]
-  B --> C[Integration Service]
-  C --> D[Context Resolver]
-  D --> E[Web Application]
-  C --> F[Audit Trail]`,
-    title: 'Telephony Context Integration',
+    alt: 'Flow diagram: an application API passes requests through a validation layer to a payment orchestrator, which routes each transaction to one of several providers. Results land in a single transaction store that publishes events.',
+    description:
+      'A single orchestration layer routes transactions across multiple payment providers, so adding a provider or handling an outage never touches application code. All transactions land in one store and publish events for downstream consumers like reconciliation and reporting.',
+    diagram: {
+      dark: paymentOrchestrationDark,
+      light: paymentOrchestrationLight,
+    },
+    title: 'Payment Provider Orchestration',
   },
 ];
-
-const MermaidDiagram = ({ chart }: { readonly chart: string }) => {
-  const id = useId();
-  const [svg, setSvg] = useState('');
-  const [isDark, setIsDark] = useState(
-    () => window.matchMedia('(prefers-color-scheme: dark)').matches,
-  );
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handler = (event: MediaQueryListEvent) => setIsDark(event.matches);
-    mediaQuery.addEventListener('change', handler);
-    return () => mediaQuery.removeEventListener('change', handler);
-  }, []);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    mermaid.initialize({
-      securityLevel: 'strict',
-      startOnLoad: false,
-      theme: isDark ? 'dark' : 'default',
-    });
-
-    const renderDiagram = async () => {
-      const themeKey = isDark ? 'dark' : 'light';
-      const renderId = `mermaid-${id.replaceAll(':', '')}-${themeKey}`;
-
-      const { svg: renderedSvg } = await mermaid.render(renderId, chart);
-
-      if (isMounted) {
-        setSvg(renderedSvg);
-      }
-    };
-
-    void renderDiagram();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [chart, id, isDark]);
-
-  return (
-    <div
-      className="mermaid-diagram flex justify-center"
-      /* eslint-disable-next-line react/no-danger */
-      dangerouslySetInnerHTML={{ __html: svg }}
-      style={{ colorScheme: 'only light' }}
-    />
-  );
-};
 
 export const ArchitectureGallery = () => {
   return (
@@ -94,8 +44,9 @@ export const ArchitectureGallery = () => {
             Clear integration patterns for real-world software systems.
           </h2>
           <p className="mt-4 text-warm-gray-600 dark:text-cream-200/70">
-            Simplified examples showing the kinds of system boundaries and data
-            flows I work with.
+            Simplified views of real systems I have designed and run in
+            production — implementation details abstracted out of respect for
+            employer and client confidentiality.
           </p>
         </div>
 
@@ -124,8 +75,17 @@ export const ArchitectureGallery = () => {
                 {project.description}
               </p>
 
-              <div className="overflow-x-auto rounded-xl border border-cream-200 bg-cream-50 p-6 font-mono text-sm dark:border-espresso-800 dark:bg-espresso-950">
-                <MermaidDiagram chart={project.mermaid} />
+              <div className="overflow-x-auto rounded-xl border border-cream-200 bg-cream-50 p-6 dark:border-espresso-800 dark:bg-espresso-950">
+                <img
+                  alt={project.alt}
+                  className="mx-auto max-h-80 w-auto max-w-full md:max-h-150 dark:hidden"
+                  src={project.diagram.light}
+                />
+                <img
+                  alt={project.alt}
+                  className="mx-auto hidden max-h-80 w-auto max-w-full md:max-h-150 dark:block"
+                  src={project.diagram.dark}
+                />
 
                 <div className="mt-4 border-t border-cream-200 pt-4 text-xs italic text-warm-gray-500 dark:border-espresso-800 dark:text-cream-200/60">
                   * Simplified architecture example. Detailed implementation

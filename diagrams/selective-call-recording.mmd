@@ -1,0 +1,7 @@
+graph TD
+  RS[Recording Servers] -- recording events --> MQ[RabbitMQ]
+  AES[Avaya AES WTI] -- real-time call events --> MQ
+  MQ --> W[Selective Recording Worker]
+  W <--> ST[(Per-call State)]
+  W -- agent registered --> RC[Issue resume-recording command]
+  W -- agent not registered --> NP[Recording remains paused]

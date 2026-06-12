@@ -20,8 +20,8 @@ export const Projects = () => {
             backend systems.
           </h2>
           <p className="mt-4 text-warm-gray-600 dark:text-cream-200/70">
-            Examples of the kinds of systems, integrations, and architectural
-            problems I work with professionally.
+            Systems I have designed, built, and run in production — described at
+            a high level out of respect for employer and client confidentiality.
           </p>
         </div>
 

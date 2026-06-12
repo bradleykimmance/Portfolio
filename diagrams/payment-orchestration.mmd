@@ -1,0 +1,9 @@
+graph TD
+  A[Application API] --> B[Validation Layer]
+  B --> C[Payment Orchestrator]
+  C --> D{Provider Router}
+  D --> E[Provider A]
+  D --> F[Provider B]
+  E --> G[Transaction Store]
+  F --> G
+  G --> H[Event Publisher]

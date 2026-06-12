@@ -10,4 +10,15 @@ describe('App', () => {
     });
     expect(screen.getAllByText(/Bradley Kimmance/iu).length).toBeGreaterThan(0);
   });
+
+  it('renders the contact section with an email link', async () => {
+    await act(async () => {
+      render(<App />);
+    });
+    const emailLink = screen.getByRole('link', { name: /email me/iu });
+    expect(emailLink).toHaveAttribute(
+      'href',
+      'mailto:bradleykimmance@hotmail.co.uk',
+    );
+  });
 });
