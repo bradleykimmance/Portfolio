@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "diagrams": "mmdc -i diagrams/payment-orchestration.mmd -o src/assets/diagrams/payment-orchestration-light.svg -t default -b transparent && mmdc -i diagrams/payment-orchestration.mmd -o src/assets/diagrams/payment-orchestration-dark.svg -t dark -b transparent && mmdc -i diagrams/telephony-context.mmd -o src/assets/diagrams/telephony-context-light.svg -t default -b transparent && mmdc -i diagrams/telephony-context.mmd -o src/assets/diagrams/telephony-context-dark.svg -t dark -b transparent",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "npm run lint:eslint && npm run lint:knip && npm run typecheck",
@@ -19,11 +20,13 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "lucide-react": "^1.14.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-icons": "^5.6.0"
   },
   "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^11.15.0",
     "@tailwindcss/vite": "^4.2.4",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
@@ -37,8 +40,6 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "jsdom": "^29.1.1",
     "knip": "^6.11.0",
-    "lucide-react": "^1.14.0",
-    "mermaid": "^11.14.0",
     "typescript": "~6.0.2",
     "vite": "^8.0.10",
     "vitest": "^4.1.5"

@@ -1,85 +1,33 @@
+import paymentOrchestrationDark from '../assets/diagrams/payment-orchestration-dark.svg';
+import paymentOrchestrationLight from '../assets/diagrams/payment-orchestration-light.svg';
+import telephonyContextDark from '../assets/diagrams/telephony-context-dark.svg';
+import telephonyContextLight from '../assets/diagrams/telephony-context-light.svg';
 import { Code } from 'lucide-react';
-import mermaid from 'mermaid';
-import { useEffect, useId, useState } from 'react';
 
+// SVGs are pre-rendered from the Mermaid sources in diagrams/*.mmd.
+// After editing a .mmd file, regenerate them with `npm run diagrams`.
 const architectureProjects = [
   {
+    alt: 'Flow diagram: an application API passes requests through a validation layer to a payment orchestrator, which routes each transaction to one of several providers. Results land in a single transaction store that publishes events.',
     description:
       'A single orchestration layer routes transactions across multiple payment providers, so adding a provider or handling an outage never touches application code. All transactions land in one store and publish events for downstream consumers like reconciliation and reporting.',
-    mermaid: `graph TD
-  A[Application API] --> B[Validation Layer]
-  B --> C[Payment Orchestrator]
-  C --> D{Provider Router}
-  D --> E[Provider A]
-  D --> F[Provider B]
-  E --> G[Transaction Store]
-  F --> G
-  G --> H[Event Publisher]`,
+    diagram: {
+      dark: paymentOrchestrationDark,
+      light: paymentOrchestrationLight,
+    },
     title: 'Payment Provider Orchestration',
   },
   {
+    alt: 'Flow diagram: a telephony platform emits events to a listener inside an integration service. A context resolver enriches each event before it reaches the web application, while an audit trail records every interaction.',
     description:
       'An integration service subscribes to telephony platform events, resolves each call against business context, and surfaces it in the web application in real time — with an audit trail so every interaction stays traceable.',
-    mermaid: `graph TD
-  A[Telephony Platform] --> B[Event Listener]
-  B --> C[Integration Service]
-  C --> D[Context Resolver]
-  D --> E[Web Application]
-  C --> F[Audit Trail]`,
+    diagram: {
+      dark: telephonyContextDark,
+      light: telephonyContextLight,
+    },
     title: 'Telephony Context Integration',
   },
 ];
-
-const MermaidDiagram = ({ chart }: { readonly chart: string }) => {
-  const id = useId();
-  const [svg, setSvg] = useState('');
-  const [isDark, setIsDark] = useState(
-    () => window.matchMedia('(prefers-color-scheme: dark)').matches,
-  );
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const handler = (event: MediaQueryListEvent) => setIsDark(event.matches);
-    mediaQuery.addEventListener('change', handler);
-    return () => mediaQuery.removeEventListener('change', handler);
-  }, []);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    mermaid.initialize({
-      securityLevel: 'strict',
-      startOnLoad: false,
-      theme: isDark ? 'dark' : 'default',
-    });
-
-    const renderDiagram = async () => {
-      const themeKey = isDark ? 'dark' : 'light';
-      const renderId = `mermaid-${id.replaceAll(':', '')}-${themeKey}`;
-
-      const { svg: renderedSvg } = await mermaid.render(renderId, chart);
-
-      if (isMounted) {
-        setSvg(renderedSvg);
-      }
-    };
-
-    void renderDiagram();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [chart, id, isDark]);
-
-  return (
-    <div
-      className="mermaid-diagram flex justify-center"
-      /* eslint-disable-next-line react/no-danger */
-      dangerouslySetInnerHTML={{ __html: svg }}
-      style={{ colorScheme: 'only light' }}
-    />
-  );
-};
 
 export const ArchitectureGallery = () => {
   return (
@@ -126,8 +74,17 @@ export const ArchitectureGallery = () => {
                 {project.description}
               </p>
 
-              <div className="overflow-x-auto rounded-xl border border-cream-200 bg-cream-50 p-6 font-mono text-sm dark:border-espresso-800 dark:bg-espresso-950">
-                <MermaidDiagram chart={project.mermaid} />
+              <div className="overflow-x-auto rounded-xl border border-cream-200 bg-cream-50 p-6 dark:border-espresso-800 dark:bg-espresso-950">
+                <img
+                  alt={project.alt}
+                  className="mx-auto max-h-80 w-auto max-w-full md:max-h-150 dark:hidden"
+                  src={project.diagram.light}
+                />
+                <img
+                  alt={project.alt}
+                  className="mx-auto hidden max-h-80 w-auto max-w-full md:max-h-150 dark:block"
+                  src={project.diagram.dark}
+                />
 
                 <div className="mt-4 border-t border-cream-200 pt-4 text-xs italic text-warm-gray-500 dark:border-espresso-800 dark:text-cream-200/60">
                   * Simplified architecture example. Detailed implementation
