@@ -1,3 +1,18 @@
+# [0.2.0](https://github.com/bradleykimmance/Portfolio/compare/v0.1.1...v0.2.0) (2026-06-12)
+
+
+### Features
+
+* add contact section, architecture descriptions, and SEO polish ([7b3f3ae](https://github.com/bradleykimmance/Portfolio/commit/7b3f3ae1a39a1da4aa70c4ba1040c5e9f781f8e1))
+* rewrite site content around real experience ([8b535a4](https://github.com/bradleykimmance/Portfolio/commit/8b535a42838a7fbb23423fbb439c2be1a5f736a9))
+
+
+### Performance Improvements
+
+* pre-render mermaid diagrams to static SVGs ([15653a0](https://github.com/bradleykimmance/Portfolio/commit/15653a0a22b7c60000dbeee050d4efd1d2f8d579))
+
+
+
 ## [0.1.1](https://github.com/bradleykimmance/Portfolio/compare/v0.1.0...v0.1.1) (2026-05-02)
 
 
