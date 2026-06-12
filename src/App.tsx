@@ -1,5 +1,6 @@
 import { ArchitectureGallery } from './components/ArchitectureGallery';
 import { Competencies } from './components/Competencies';
+import { Contact } from './components/Contact';
 import { Hero } from './components/Hero';
 import { Navbar } from './components/Navbar';
 import { Projects } from './components/Projects';
@@ -15,6 +16,7 @@ const App = () => {
         <Competencies />
         <ArchitectureGallery />
         <Projects />
+        <Contact />
       </main>
       <footer className="border-t border-cream-200 px-4 py-12 text-center text-sm text-warm-gray-500 dark:border-espresso-800 dark:text-cream-200/70">
         <p>

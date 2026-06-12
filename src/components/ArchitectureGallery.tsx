@@ -4,7 +4,8 @@ import { useEffect, useId, useState } from 'react';
 
 const architectureProjects = [
   {
-    description: 'Example Architecture 1',
+    description:
+      'A single orchestration layer routes transactions across multiple payment providers, so adding a provider or handling an outage never touches application code. All transactions land in one store and publish events for downstream consumers like reconciliation and reporting.',
     mermaid: `graph TD
   A[Application API] --> B[Validation Layer]
   B --> C[Payment Orchestrator]
@@ -17,7 +18,8 @@ const architectureProjects = [
     title: 'Payment Provider Orchestration',
   },
   {
-    description: 'Example Architecture 2',
+    description:
+      'An integration service subscribes to telephony platform events, resolves each call against business context, and surfaces it in the web application in real time — with an audit trail so every interaction stays traceable.',
     mermaid: `graph TD
   A[Telephony Platform] --> B[Event Listener]
   B --> C[Integration Service]
