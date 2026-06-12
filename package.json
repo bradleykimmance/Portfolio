@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "diagrams": "mmdc -i diagrams/payment-orchestration.mmd -o src/assets/diagrams/payment-orchestration-light.svg -t default -b transparent && mmdc -i diagrams/payment-orchestration.mmd -o src/assets/diagrams/payment-orchestration-dark.svg -t dark -b transparent && mmdc -i diagrams/telephony-context.mmd -o src/assets/diagrams/telephony-context-light.svg -t default -b transparent && mmdc -i diagrams/telephony-context.mmd -o src/assets/diagrams/telephony-context-dark.svg -t dark -b transparent",
+    "diagrams": "mmdc -i diagrams/payment-orchestration.mmd -o src/assets/diagrams/payment-orchestration-light.svg -t default -b transparent && mmdc -i diagrams/payment-orchestration.mmd -o src/assets/diagrams/payment-orchestration-dark.svg -t dark -b transparent && mmdc -i diagrams/selective-call-recording.mmd -o src/assets/diagrams/selective-call-recording-light.svg -t default -b transparent && mmdc -i diagrams/selective-call-recording.mmd -o src/assets/diagrams/selective-call-recording-dark.svg -t dark -b transparent",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "npm run lint:eslint && npm run lint:knip && npm run typecheck",

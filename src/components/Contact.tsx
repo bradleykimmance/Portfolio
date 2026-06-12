@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa6';
 
 const contactLinks = [
   {
-    description: 'The fastest way to reach me for roles or collaboration.',
+    description: 'The fastest way to reach me for anything professional.',
     external: false,
     href: 'mailto:bradleykimmance@hotmail.co.uk',
     Icon: Mail,
@@ -11,7 +11,7 @@ const contactLinks = [
     title: 'Email',
   },
   {
-    description: 'Connect for roles, referrals, or a longer conversation.',
+    description: 'Connect professionally or continue the conversation.',
     external: true,
     href: 'https://uk.linkedin.com/in/bradleykimmance',
     Icon: FaLinkedin,
@@ -31,7 +31,7 @@ const contactLinks = [
 export const Contact = () => {
   return (
     <section
-      className="px-4 py-20"
+      className="bg-cream-100/60 px-4 py-20 dark:bg-espresso-900/50"
       id="contact"
     >
       <div className="mx-auto max-w-7xl">
@@ -40,11 +40,12 @@ export const Contact = () => {
             Contact
           </p>
           <h2 className="text-3xl font-bold text-espresso-950 dark:text-cream-50">
-            Open to backend and full-stack engineering roles.
+            Always happy to talk integrations, architecture, and interesting
+            problems.
           </h2>
           <p className="mt-4 text-warm-gray-600 dark:text-cream-200/70">
-            Hiring, recruiting, or just want to talk integrations and
-            architecture? The quickest paths are below.
+            Whether it&apos;s a technical question, a collaboration, or just
+            talking shop — the quickest paths are below.
           </p>
 
           <div className="mt-8 flex justify-center">
@@ -60,7 +61,7 @@ export const Contact = () => {
         <div className="grid gap-8 md:grid-cols-3">
           {contactLinks.map(({ external, Icon, ...link }) => (
             <a
-              className="group rounded-2xl border border-cream-200 bg-white/80 p-6 text-center shadow-sm transition-transform hover:-translate-y-1 md:text-left dark:border-espresso-800 dark:bg-espresso-900/70"
+              className="group rounded-2xl border border-cream-200 bg-white/80 p-6 text-center shadow-sm transition-transform hover:-translate-y-1 md:text-left dark:border-espresso-800 dark:bg-espresso-950/70"
               href={link.href}
               key={link.title}
               rel={external ? 'noopener noreferrer' : undefined}

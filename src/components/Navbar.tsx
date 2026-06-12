@@ -9,6 +9,7 @@ export const Navbar = () => {
     { href: '#competencies', name: 'Competencies' },
     { href: '#architecture', name: 'Architecture' },
     { href: '#projects', name: 'Experience' },
+    { href: '#career', name: 'Career' },
     { href: '#contact', name: 'Contact' },
   ];
 

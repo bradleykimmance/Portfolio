@@ -1,12 +1,22 @@
 import paymentOrchestrationDark from '../assets/diagrams/payment-orchestration-dark.svg';
 import paymentOrchestrationLight from '../assets/diagrams/payment-orchestration-light.svg';
-import telephonyContextDark from '../assets/diagrams/telephony-context-dark.svg';
-import telephonyContextLight from '../assets/diagrams/telephony-context-light.svg';
+import selectiveCallRecordingDark from '../assets/diagrams/selective-call-recording-dark.svg';
+import selectiveCallRecordingLight from '../assets/diagrams/selective-call-recording-light.svg';
 import { Code } from 'lucide-react';
 
 // SVGs are pre-rendered from the Mermaid sources in diagrams/*.mmd.
 // After editing a .mmd file, regenerate them with `npm run diagrams`.
 const architectureProjects = [
+  {
+    alt: 'Flow diagram: recording servers and an Avaya AES WTI service publish events to RabbitMQ. A selective recording worker consumes them, maintains per-call state, and either issues a resume-recording command for registered agents or leaves recording paused.',
+    description:
+      'A RabbitMQ-based state machine that synchronises events from recording servers and a real-time telephony service so that only registered agents are ever recorded. The worker maintains per-call state across both event streams and issues resume-recording commands — running against thousands of concurrent calls in production.',
+    diagram: {
+      dark: selectiveCallRecordingDark,
+      light: selectiveCallRecordingLight,
+    },
+    title: 'Selective Call Recording Worker',
+  },
   {
     alt: 'Flow diagram: an application API passes requests through a validation layer to a payment orchestrator, which routes each transaction to one of several providers. Results land in a single transaction store that publishes events.',
     description:
@@ -16,16 +26,6 @@ const architectureProjects = [
       light: paymentOrchestrationLight,
     },
     title: 'Payment Provider Orchestration',
-  },
-  {
-    alt: 'Flow diagram: a telephony platform emits events to a listener inside an integration service. A context resolver enriches each event before it reaches the web application, while an audit trail records every interaction.',
-    description:
-      'An integration service subscribes to telephony platform events, resolves each call against business context, and surfaces it in the web application in real time — with an audit trail so every interaction stays traceable.',
-    diagram: {
-      dark: telephonyContextDark,
-      light: telephonyContextLight,
-    },
-    title: 'Telephony Context Integration',
   },
 ];
 
@@ -44,8 +44,9 @@ export const ArchitectureGallery = () => {
             Clear integration patterns for real-world software systems.
           </h2>
           <p className="mt-4 text-warm-gray-600 dark:text-cream-200/70">
-            Simplified examples showing the kinds of system boundaries and data
-            flows I work with.
+            Simplified views of real systems I have designed and run in
+            production — implementation details abstracted out of respect for
+            employer and client confidentiality.
           </p>
         </div>
 

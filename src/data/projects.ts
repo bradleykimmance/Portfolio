@@ -1,38 +1,32 @@
 export const projects = [
   {
     description:
-      'Worked with public payment provider APIs in commercial software environments, supporting authorisation, settlement, tokenisation, 3D Secure, and multi-provider transaction workflows.',
+      'Took a compliance-critical recording system from concept to production: a RabbitMQ-based state machine synchronising real-time call events from the Avaya AES WebSocket Telephony Interface with recording servers, enriching recordings with agent metadata and issuing resume-recording commands so only registered agents are recorded — across thousands of concurrent calls.',
     techStack: [
       'TypeScript',
-      'Node.js',
-      'PSP APIs',
-      '3D Secure',
-      'Architecture',
-    ],
-    title: 'Payment Provider Integrations',
-  },
-  {
-    description:
-      'Integrated contact-centre and telephony platforms into web applications, helping surface real-time call context and operational information for business users.',
-    techStack: [
-      'TypeScript',
-      'Genesys Cloud CX',
+      'RabbitMQ',
+      'Kubernetes',
       'Avaya AES',
-      'APIs',
-      'Web Apps',
+      'WebSockets',
     ],
-    title: 'Telephony & Contact Centre Integrations',
+    title: 'Selective Call Recording Worker',
   },
   {
     description:
-      'Built and supported backend-focused services using cloud-native patterns, asynchronous processing, caching, and maintainable service boundaries.',
-    techStack: ['Node.js', 'AWS', 'Kubernetes', 'Redis', 'RabbitMQ'],
-    title: 'Cloud-Native Backend Services',
+      'Built a widget integrated with Genesys Cloud CX that links web sessions with SIP call messaging and web chat, giving agents full customer context in one place and improving handling efficiency.',
+    techStack: ['TypeScript', 'Genesys Cloud CX', 'SIP', 'Web Chat'],
+    title: 'Genesys Cloud CX Web Integration',
   },
   {
     description:
-      'Focused on practical problem solving, clean architecture, and integration design that keeps complex systems understandable, reliable, and maintainable.',
-    techStack: ['Clean Architecture', 'System Design', 'APIs', 'Reliability'],
-    title: 'Practical Architecture',
+      'Developed and maintained payment-processing microservices in TypeScript and Node.js, expanding payment service provider coverage and improving reliability and security. Earlier, built secure payment pages and web proxies for major clients, and configured Kamailio dial-plans routing calls between secure voice appliances and agents.',
+    techStack: ['TypeScript', 'Node.js', 'PSP APIs', 'Kamailio'],
+    title: 'Payment Processing Microservices',
+  },
+  {
+    description:
+      'Delivered serverless APIs on AWS: a DNIS data API using Lambda, DynamoDB, and Secrets Manager for secure IVR-to-agent data handling. Deployed and managed services with Kubernetes, Helm, and Istio.',
+    techStack: ['AWS Lambda', 'DynamoDB', 'Redis', 'Auth0', 'Helm', 'Istio'],
+    title: 'Serverless & Cloud Platform Work',
   },
 ];

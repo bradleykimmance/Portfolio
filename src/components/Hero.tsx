@@ -10,7 +10,7 @@ export const Hero = () => {
         </p>
 
         <p className="mb-8 text-base font-semibold uppercase tracking-[0.22em] text-gold-500 md:text-xl dark:text-gold-300">
-          Full-Stack Software Engineer
+          Backend-Focused Software Engineer
         </p>
 
         <h1 className="mb-6 text-4xl font-bold tracking-tight text-espresso-950 md:text-5xl lg:text-6xl dark:text-cream-50">
@@ -22,9 +22,9 @@ export const Hero = () => {
         </h1>
 
         <p className="mx-auto max-w-3xl text-lg leading-8 text-warm-gray-600 md:text-xl dark:text-cream-200/80">
-          I build backend-focused TypeScript and Node.js systems around complex
-          third-party integrations, payment workflows, telephony platforms, and
-          cloud-native services.
+          I build backend TypeScript and Node.js systems around complex
+          third-party integrations — payment workflows, real-time telephony
+          platforms, and event-driven services running on Kubernetes.
         </p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
