@@ -1,7 +1,37 @@
-export const projects = [
+type Project = {
+  description: string;
+  kind: 'commercial' | 'open-source';
+  links?: {
+    github: string;
+    live: string;
+  };
+  techStack: string[];
+  title: string;
+};
+
+export const projects: Project[] = [
+  {
+    description:
+      'An open-source payments sandbox demonstrating the adapter / anti-corruption-layer pattern. A React form sends one canonical request to a Cloudflare Worker, which routes it through PSP-specific adapters to the Stripe and Adyen test APIs and normalises their very different responses back into a single contract — with end-to-end idempotency keys so a retried payment can never authorise twice.',
+    kind: 'open-source',
+    links: {
+      github: 'https://github.com/bradleykimmance/psp-orchestrator',
+      live: 'https://payments.bradleykimmance.dev/',
+    },
+    techStack: [
+      'TypeScript',
+      'Cloudflare Workers',
+      'React',
+      'Zod',
+      'Stripe',
+      'Adyen',
+    ],
+    title: 'PSP Orchestrator',
+  },
   {
     description:
       'Took a compliance-critical recording system from concept to production: a RabbitMQ-based state machine synchronising real-time call events from the Avaya AES WebSocket Telephony Interface with recording servers, enriching recordings with agent metadata and issuing resume-recording commands so only registered agents are recorded — across thousands of concurrent calls.',
+    kind: 'commercial',
     techStack: [
       'TypeScript',
       'RabbitMQ',
@@ -14,18 +44,21 @@ export const projects = [
   {
     description:
       'Built a widget integrated with Genesys Cloud CX that links web sessions with SIP call messaging and web chat, giving agents full customer context in one place and improving handling efficiency.',
+    kind: 'commercial',
     techStack: ['TypeScript', 'Genesys Cloud CX', 'SIP', 'Web Chat'],
     title: 'Genesys Cloud CX Web Integration',
   },
   {
     description:
       'Developed and maintained payment-processing microservices in TypeScript and Node.js, expanding payment service provider coverage and improving reliability and security. Earlier, built secure payment pages and web proxies for major clients, and configured Kamailio dial-plans routing calls between secure voice appliances and agents.',
+    kind: 'commercial',
     techStack: ['TypeScript', 'Node.js', 'PSP APIs', 'Kamailio'],
     title: 'Payment Processing Microservices',
   },
   {
     description:
       'Delivered serverless APIs on AWS: a DNIS data API using Lambda, DynamoDB, and Secrets Manager for secure IVR-to-agent data handling. Deployed and managed services with Kubernetes, Helm, and Istio.',
+    kind: 'commercial',
     techStack: ['AWS Lambda', 'DynamoDB', 'Redis', 'Auth0', 'Helm', 'Istio'],
     title: 'Serverless & Cloud Platform Work',
   },
