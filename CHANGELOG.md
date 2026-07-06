@@ -1,3 +1,12 @@
+# [0.3.0](https://github.com/bradleykimmance/Portfolio/compare/v0.2.0...v0.3.0) (2026-07-06)
+
+
+### Features
+
+* **projects:** add psp orchestrator open source project ([fe65aad](https://github.com/bradleykimmance/Portfolio/commit/fe65aad9e088b7ef14acfcc02892696505d32b8e))
+
+
+
 # [0.2.0](https://github.com/bradleykimmance/Portfolio/compare/v0.1.1...v0.2.0) (2026-06-12)
 
 
